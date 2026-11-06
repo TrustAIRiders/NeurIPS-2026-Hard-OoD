@@ -6,7 +6,7 @@ import pandas as pd
 SCORES_ROOT = Path('./scores')
 ID_DATASET_NAME = 'test'
 OOD_DATASET_NAMES = ['imagenetood', 'ninco']
-OUT_DIR = Path('./ImageNet_dataset')
+OUT_DIR = Path('./benchmark_splits')
 
 N_ID = 10000
 N_OOD = 10000

@@ -1,11 +1,13 @@
-numpy
-pandas
-Pillow
-matplotlib
-scipy
-scikit-learn
+numpy==2.2.0
+pandas==2.3.3
+Pillow==11.3.0
+matplotlib==3.10.8
+scipy==1.15.3
+scikit-learn==1.7.0
 
-torch
-torchvision
-timm
-pytorch-ood
+torch==2.9.1
+torchvision==0.24.1
+timm==1.0.22
+pytorch-ood==0.2.3
+open_clip_torch==3.2.0
+tqdm==4.67.1

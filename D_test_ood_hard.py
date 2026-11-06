@@ -28,7 +28,7 @@ BATCH_SIZE = 64
 OUT_DIR = Path('./ood_on_hard')
 DATASET_PATH = "/datasets/"  # Set to the directory containing the dataset folders
 DATASET_IMAGE_NET_2012_PATH = os.path.join(DATASET_PATH, 'ImageNet2012')
-LISTS_DIR = Path('./ImageNet_dataset')
+LISTS_DIR = Path('./benchmark_splits')
 ID_HARD_LIST = LISTS_DIR / 'id_test_hard_list.txt'
 OOD_HARD_LIST = LISTS_DIR / 'ood_hard_list.txt'
 SEPARATOR = ','
@@ -90,8 +90,8 @@ class ImageNetKaggleWithPaths(Dataset):
 
 def resolve_image_path(path):
     path = str(path)
-    if os.path.isabs(path):
-        return path
+    if path.startswith("/datasets/"):
+        path = path[len("/datasets/"):]
     return os.path.join(DATASET_PATH, path)
 
 

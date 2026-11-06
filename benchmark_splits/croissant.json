@@ -1,0 +1,144 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "equivalentProperty": "cr:equivalentProperty",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "prov": "http://www.w3.org/ns/prov#"
+  },
+  "@type": "sc:Dataset",
+  "name": "NeurIPS-2026-Hard-OoD",
+  "datePublished": "2026-11-06",
+  "url": "https://github.com/TrustAIRiders/NeurIPS-2026-Hard-OoD",
+  "description": "Easy and hard evaluation splits for semantic out-of-distribution detection relative to ImageNet-1K. The release contains four lists of 10,000 image identifiers and integer labels each. ID images come from the ImageNet-1K validation set. OOD images come from NINCO and ImageNet-OOD. Image files are not redistributed. Paths in the lists identify images in the original local directory layout and must be mapped to the user's copies of the source datasets.",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "usageInfo": "The split-list license applies only to the released lists and does not license the underlying images. Obtain source images separately and follow the original datasets' licenses and access terms. This metadata-only description documents the original headerless split files as downloadable resources. RecordSets are omitted because automatic line extraction from this format is not reliably supported by the reference loader. Each nonempty line contains an image path followed by a comma and an integer label. Split each line at its final comma. ID labels are ImageNet class indices from 0 to 999; OOD labels are -1.",
+  "creator": [
+    {
+      "@type": "sc:Person",
+      "name": "Kamil Szyc",
+      "affiliation": {
+        "@type": "sc:Organization",
+        "name": "Wroclaw University of Science and Technology"
+      }
+    },
+    {
+      "@type": "sc:Person",
+      "name": "Tomasz Walkowiak",
+      "affiliation": {
+        "@type": "sc:Organization",
+        "name": "Wroclaw University of Science and Technology"
+      }
+    },
+    {
+      "@type": "sc:Person",
+      "name": "Henryk Maciejewski",
+      "affiliation": {
+        "@type": "sc:Organization",
+        "name": "Wroclaw University of Science and Technology"
+      }
+    }
+  ],
+  "rai:dataLimitations": "Difficulty is defined relative to selected ImageNet-1K-supervised reference models and OOD detectors. These selected splits are stress tests, not representative samples of deployment traffic. Results do not establish performance across all datasets, training regimes, or modalities.",
+  "rai:dataBiases": "The selection deliberately overrepresents images receiving consistently easy or hard OOD scores across the reference model-detector pairs. The hard ID split also contains more classification errors. The release inherits coverage and label limitations from the source datasets. Demographic representativeness has not been established.",
+  "rai:personalSensitiveInformation": "The distributed records contain image paths and class labels, without additional personal or demographic annotations. Original images are not redistributed. The selection procedure does not establish that source images are free of personal or sensitive information.",
+  "rai:dataUseCases": "Research evaluation of semantic ID/OOD separation, comparison of post-hoc OOD detectors, and analysis of shared difficulty across representations. The accompanying paper evaluates these uses. The benchmark is not validated as a demographic fairness assessment or a certification of deployment safety.",
+  "rai:dataSocialImpact": "The benchmark supports reproducible investigation of OOD detection failures and may inform more reliable systems. Published failure cases could also help identify inputs that evade OOD rejection. Results should not be interpreted as safety guarantees.",
+  "rai:hasSyntheticData": false,
+  "prov:wasDerivedFrom": [
+    {
+      "@id": "https://image-net.org/challenges/LSVRC/2012/"
+    },
+    {
+      "@id": "https://github.com/j-cb/NINCO"
+    },
+    {
+      "@id": "https://github.com/princetonvisualai/imagenetood"
+    }
+  ],
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "name": "Selection of easy and hard evaluation splits",
+    "description": "Existing images were selected without generating new images or collecting new human annotations. For each available model-detector pair, detector scores were converted to percentile ranks separately for ID and the pooled NINCO and ImageNet-OOD candidates. Hardness corresponds to high OOD scores for ID and low OOD scores for OOD. Hardness percentiles were averaged across the available model-detector pairs, and the 10,000 easiest and 10,000 hardest images were selected separately for ID and OOD. ID class labels were retained and OOD labels were set to -1. Selection and evaluation code is provided in the dataset repository."
+  },
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "benchmark_splits/id_test_easy_list.txt",
+      "name": "id_test_easy_list.txt",
+      "contentUrl": "https://github.com/TrustAIRiders/NeurIPS-2026-Hard-OoD/raw/refs/heads/main/benchmark_splits/id_test_easy_list.txt",
+      "encodingFormat": "text/plain",
+      "description": "Headerless UTF-8 text, one image_path,label record per line. 10,000 records.",
+      "sha256": "e0c834a434d9de72b37ebbaff1fc7c972e89f5a6a4ec92bce626b37af659d6d6"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "benchmark_splits/id_test_hard_list.txt",
+      "name": "id_test_hard_list.txt",
+      "contentUrl": "https://github.com/TrustAIRiders/NeurIPS-2026-Hard-OoD/raw/refs/heads/main/benchmark_splits/id_test_hard_list.txt",
+      "encodingFormat": "text/plain",
+      "description": "Headerless UTF-8 text, one image_path,label record per line. 10,000 records.",
+      "sha256": "ed39b3a986538252f1c44f8fd13b40fdab2c799d76f224cd3a7ba0d715dfe8b7"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "benchmark_splits/ood_easy_list.txt",
+      "name": "ood_easy_list.txt",
+      "contentUrl": "https://github.com/TrustAIRiders/NeurIPS-2026-Hard-OoD/raw/refs/heads/main/benchmark_splits/ood_easy_list.txt",
+      "encodingFormat": "text/plain",
+      "description": "Headerless UTF-8 text, one image_path,label record per line. 10,000 records.",
+      "sha256": "34acb98fb16213efd132221b48d3c79987f8ebe7a987c4011e9bcd9104e28d5b"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "benchmark_splits/ood_hard_list.txt",
+      "name": "ood_hard_list.txt",
+      "contentUrl": "https://github.com/TrustAIRiders/NeurIPS-2026-Hard-OoD/raw/refs/heads/main/benchmark_splits/ood_hard_list.txt",
+      "encodingFormat": "text/plain",
+      "description": "Headerless UTF-8 text, one image_path,label record per line. 10,000 records.",
+      "sha256": "fa1b4a9c918a4794d8f40e10d3683fa41ee302f1e66153fd7e2b9415fddd5c2e"
+    }
+  ]
+}
